@@ -8,7 +8,7 @@ const useResponse = () => {
   useEffect(() => {
     const url =
       process.env.NODE_ENV === "production"
-        ? "https://express-app-20764232504.us-central1.run.app/"
+        ? "https://sandbox-20764232504.us-central1.run.app/"
         : "http://localhost:8080/";
     fetch(url)
       .then((res) => res.text())
