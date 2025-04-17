@@ -1,0 +1,26 @@
+# Use official Node.js image
+FROM node:18 as build
+
+# Install pnpm globally
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Create app directory
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+
+WORKDIR /app/apps/frontend
+
+# Copy dependency files and install
+COPY apps/frontend ./
+RUN pnpm install --frozen-lockfile
+RUN pnpm build
+
+# Serve with nginx
+FROM nginx:alpine
+
+COPY --from=build /app/apps/frontend/build /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nx run-many --target start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.8.0"
+  "packageManager": "pnpm@10.8.0",
+  "devDependencies": {
+    "nx": "20.8.0"
+  }
 }
