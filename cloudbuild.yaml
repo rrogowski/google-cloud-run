@@ -1,0 +1,15 @@
+# cloudbuild.yaml (in the monorepo root)
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "gcr.io/serious-mile-456614-t0/express-app",
+        "-f",
+        "apps/backend/Dockerfile",
+        ".",
+      ]
+
+images:
+  - "gcr.io/serious-mile-456614-t0/express-app"
